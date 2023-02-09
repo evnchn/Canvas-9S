@@ -2,6 +2,16 @@ debug_mode = false;
 
 var ongoing_scan = false;
 
+function get_course_id() {
+    splits_url = location.href.split("/");
+    for (var i = 0; i <= splits_url.length; i++) {
+        if (splits_url[i] && !isNaN(splits_url[i])) {
+            return splits_url[i]
+        }
+    }
+    return ""
+}
+
 function log_debug(input_log) {
     if (debug_mode) {
         console.log(input_log);
@@ -47,7 +57,7 @@ observeDOM(document.body, function () {
             myATags[i].onclick = function (e) {
                 e.preventDefault();
                 if (!ongoing_scan) {
-                    fetch_all_zip(location.href.replace("/files", "").split("/").slice(-1)[0], function (txt_in) {
+                    fetch_all_zip(get_course_id(), function (txt_in) {
                         commschannel_elem = document.getElementsByClassName("commschannel")[0];
                         commschannel_elem.innerHTML = txt_in;
 
