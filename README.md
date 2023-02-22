@@ -25,3 +25,4 @@ Downloads all files of a course with one click
 Fixes
 - Scrollbar in navbar
 - Nested vertical scrollbar in file preview dialog
+![Demo](css-fixes.png)
